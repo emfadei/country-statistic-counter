@@ -4,7 +4,6 @@
 namespace App\Infrastructure\Persistence\Redis;
 
 
-use App\Domain\Entity\CountryStatisticCollection;
 use App\Domain\Entity\CountryStatisticMap;
 use App\Domain\Repository\CountryStatisticRepositoryInterface;
 use Predis\ClientInterface;
@@ -17,7 +16,7 @@ class CountryStatisticStorage implements CountryStatisticRepositoryInterface
 
     public function __construct(ClientInterface $redis, string $keyPrefix)
     {
-        $this->redis = $redis;
+        $this->redis     = $redis;
         $this->keyPrefix = $keyPrefix;
     }
 

@@ -4,8 +4,8 @@ namespace App\Tests\Acceptance\Context;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeStepScope;
-use Predis\ClientInterface;
 use PHPUnit\Framework\Assert;
+use Predis\ClientInterface;
 
 class ApplicationContext implements Context
 {
@@ -15,7 +15,7 @@ class ApplicationContext implements Context
 
     public function __construct(ClientInterface $redis, string $keyPrefix)
     {
-        $this->redis = $redis;
+        $this->redis     = $redis;
         $this->keyPrefix = $keyPrefix;
     }
 
@@ -36,14 +36,12 @@ class ApplicationContext implements Context
      */
     public function thereIsValueInRedis(string $value, string $key): void
     {
-        $key = $this->keyPrefix . $key;
-
         Assert::assertTrue(
-            (bool) $this->redis->exists($key),
+            (bool) $this->redis->exists($this->keyPrefix),
             sprintf('Value by given key "%s" does not exist in redis.', $key)
         );
 
-        $data = $this->redis->get($key);
+        $data = $this->redis->hget($this->keyPrefix, $key);
 
         Assert::assertEquals($value, $data);
     }

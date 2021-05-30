@@ -17,7 +17,7 @@ class IncreaseCountryStatistics
     public function __construct(CountryStatisticRepositoryInterface $countryStatisticRepository, ValidatorInterface $validator)
     {
         $this->countryStatisticRepository = $countryStatisticRepository;
-        $this->validator = $validator;
+        $this->validator                  = $validator;
     }
 
     public function handle(IncreaseCountryStatisticsCommand $command): ?object

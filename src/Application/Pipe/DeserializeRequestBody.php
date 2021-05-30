@@ -20,7 +20,7 @@ class DeserializeRequestBody
     public function __construct(RequestSerializer $requestSerializer, ErrorFactory $errorFactory)
     {
         $this->requestSerializer = $requestSerializer;
-        $this->errorFactory = $errorFactory;
+        $this->errorFactory      = $errorFactory;
     }
 
     public function handle($request, RequestContext $requestContext): ResultInterface

@@ -17,7 +17,7 @@ class Responder
 
     public function __construct(NormalizerInterface $normalizer, ErrorCodeNegotiator $errorCodeNegotiator)
     {
-        $this->normalizer = $normalizer;
+        $this->normalizer          = $normalizer;
         $this->errorCodeNegotiator = $errorCodeNegotiator;
     }
 
@@ -25,22 +25,22 @@ class Responder
     {
         $contentType = $context['contentType'] ?? 'application/json';
 
-        $format = 'application/json' === $contentType ? 'json' : null;
+        $format  = 'application/json' === $contentType ? 'json' : null;
         $headers = ['Content-Type' => $contentType];
 
         switch (true) {
             case null === $data:
                 $normalizedData = '';
-                $httpCode = $statusCode ?? Response::HTTP_NO_CONTENT;
+                $httpCode       = $statusCode ?? Response::HTTP_NO_CONTENT;
 
                 break;
             case $data instanceof ErrorInterface:
-                $httpCode = $this->errorCodeNegotiator->negotiateHttpCode($data);
+                $httpCode       = $this->errorCodeNegotiator->negotiateHttpCode($data);
                 $normalizedData = $this->normalizer->normalize($data, $format, $context);
 
                 break;
             default:
-                $httpCode = $statusCode ?? Response::HTTP_OK;
+                $httpCode       = $statusCode ?? Response::HTTP_OK;
                 $normalizedData = $this->normalizer->normalize($data, $format, $context);
         }
 

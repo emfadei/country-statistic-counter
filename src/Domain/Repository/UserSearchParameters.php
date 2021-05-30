@@ -14,7 +14,7 @@ class UserSearchParameters
 
     public function __construct(?string $name, Pagination $pagination)
     {
-        $this->name = $name;
+        $this->name       = $name;
         $this->pagination = $pagination;
     }
 

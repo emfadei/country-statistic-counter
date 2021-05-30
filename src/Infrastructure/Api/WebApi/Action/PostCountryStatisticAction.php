@@ -23,9 +23,9 @@ class PostCountryStatisticAction
 
     public function __construct(IncreaseCountryStatistics $userCase, DeserializeRequestBody $deserializeRequestBodyPipe, Responder $responder)
     {
-        $this->userCase = $userCase;
+        $this->userCase                   = $userCase;
         $this->deserializeRequestBodyPipe = $deserializeRequestBodyPipe;
-        $this->responder = $responder;
+        $this->responder                  = $responder;
     }
 
     /**
@@ -37,7 +37,7 @@ class PostCountryStatisticAction
     public function __invoke(Request $request): Response
     {
         $requestContext = new RequestContext([], IncreaseCountryStatisticsCommand::class);
-        $result = $this->deserializeRequestBodyPipe->handle($request, $requestContext);
+        $result         = $this->deserializeRequestBodyPipe->handle($request, $requestContext);
 
         if ($result->hasError()) {
             $responseData = $result->getData();

@@ -4,7 +4,6 @@
 namespace App\Application\Error;
 
 
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ErrorBuilder implements ErrorBuilderInterface
 {

@@ -18,7 +18,7 @@ class GetCountryStatisticCollectionAction
     public function __construct(FindCountryStatisticCollection $findCountryStatisticCollection, Responder $responder)
     {
         $this->findCountryStatisticCollection = $findCountryStatisticCollection;
-        $this->responder = $responder;
+        $this->responder                      = $responder;
     }
 
     /**
