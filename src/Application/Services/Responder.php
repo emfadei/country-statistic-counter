@@ -4,6 +4,7 @@ namespace App\Application\Services;
 
 use App\Application\Error\ErrorInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
@@ -14,15 +15,18 @@ class Responder
 
     private ErrorCodeNegotiator $errorCodeNegotiator;
 
-    public function __construct(NormalizerInterface $normalizer, ErrorCodeNegotiator $errorCodeNegotiator)
+    private RequestStack $requestStack;
+
+    public function __construct(NormalizerInterface $normalizer, ErrorCodeNegotiator $errorCodeNegotiator, RequestStack $requestStack)
     {
         $this->normalizer          = $normalizer;
         $this->errorCodeNegotiator = $errorCodeNegotiator;
+        $this->requestStack        = $requestStack;
     }
 
     public function createResponse($data = null, ?int $statusCode = null, array $context = []): Response
     {
-        $contentType = $context['contentType'] ?? 'application/json';
+        $contentType = $this->getContentTypeFromRequest($context);
 
         $format  = 'application/json' === $contentType ? 'json' : null;
         $headers = ['Content-Type' => $contentType];
@@ -48,5 +52,19 @@ class Responder
         }
 
         return new JsonResponse($normalizedData, $httpCode, $headers);
+    }
+
+    private function getContentTypeFromRequest(array $context): string
+    {
+        if (\array_key_exists('contentType', $context)) {
+            return $context['contentType'];
+        }
+
+        $request = $this->requestStack->getCurrentRequest();
+        \assert(null !== $request);
+
+        $contentType = $request->headers->get('Content-Type');
+
+        return empty($contentType) ? 'application/json' : $contentType;
     }
 }

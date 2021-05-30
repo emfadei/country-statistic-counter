@@ -14,9 +14,20 @@
 Допустимо использование готовых библиотек, фреймворков и т.п..
 
 ## Запуск
+```bash
 
-1. docker-compose up -d
-2. docker exec -it   
-3. composer install
-4. Проверка стандарта и статистический анализ кода composer check
-5. Запуск приемочных тестов
+# Запуск контейнеров
+docker-compose up -d
+ 
+# Зайти в контейнер
+docker exec -it app_rest_api sh -l
+
+# Подтянут зависимости
+composer install
+
+# Проверка стандарта и статистический анализ кода
+composer check
+
+# Запуск приемочных тестов
+behat
+```
