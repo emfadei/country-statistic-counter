@@ -1,0 +1,14 @@
+services:
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        public: false
+
+    App\Tests\Acceptance\Context\ApplicationContext:
+        class: App\Tests\Acceptance\Context\ApplicationContext
+        arguments:
+            $redis: '@sb_redis.default'
+            $keyPrefix: '%country_statistic_key_prefix%'
+
+
+

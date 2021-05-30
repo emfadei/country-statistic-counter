@@ -1,0 +1,25 @@
+default:
+    suites:
+        default:
+            paths:
+                features: 'tests/Acceptance'
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
+                - rdx\behatvars\BehatVariablesContext
+                - behatch:context:json
+                - Behatch\Context\RestContext
+                - App\Tests\Acceptance\Context\ApplicationContext
+
+
+    extensions:
+        Behatch\Extension: ~
+        rdx\behatvars\BehatVariablesExtension: ~
+        FriendsOfBehat\SymfonyExtension:
+            kernel:
+                class: App\Kernel
+                environment: test
+        Behat\MinkExtension:
+            base_url: "http://example.com/"
+            sessions:
+                symfony:
+                    symfony: ~

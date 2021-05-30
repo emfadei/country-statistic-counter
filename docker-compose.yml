@@ -1,0 +1,29 @@
+version: '3'
+
+volumes:
+  composer_data:
+
+services:
+  app_rest_api:
+    container_name: app_rest_api
+    image: emfadei1989/dev:php-fpm
+    working_dir: /app
+    environment:
+      APP_NAME: 'app'
+      SERVICE_NAME: 'app'
+      REDIS_URL: tcp://redis_storage_app:6379?database=0
+    volumes:
+      - .:/app
+      - composer_data:/var/run/composer
+    ports:
+      - "9002:9001"
+      - "82:80"
+    depends_on:
+      - redis_storage_app
+
+  redis_storage_app:
+    container_name: redis_storage_app
+    image: redis:4-alpine
+    ports:
+      - "6379:6379"
+

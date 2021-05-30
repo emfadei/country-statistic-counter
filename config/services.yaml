@@ -1,0 +1,37 @@
+parameters:
+  country_statistic_key_prefix: 'country:counter:'
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+
+  App\Infrastructure\Api\WebApi\Action\:
+    resource: '%kernel.project_dir%/src/Infrastructure/Api/WebApi/Action/'
+    tags: [ 'controller.service_arguments' ]
+
+  App\Infrastructure\Serialization\:
+    resource: '%kernel.project_dir%/src/Infrastructure/Serialization/'
+
+  App\Application\Services\:
+    resource: '%kernel.project_dir%/src/Application/Services/'
+
+  App\Application\Error\:
+    resource: '%kernel.project_dir%/src/Application/Error/'
+
+  App\Application\Pipe\:
+    resource: '%kernel.project_dir%/src/Application/Pipe/'
+
+  App\Application\UseCase\:
+    resource: '%kernel.project_dir%/src/Application/UseCase/'
+
+  country_statistics_storage:
+    class: App\Infrastructure\Persistence\Redis\CountryStatisticStorage
+    arguments:
+      - '@sb_redis.default'
+      - '%country_statistic_key_prefix%'
+
+
+  App\Domain\Repository\CountryStatisticRepositoryInterface:
+    '@country_statistics_storage'
