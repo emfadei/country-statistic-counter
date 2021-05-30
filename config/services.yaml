@@ -14,6 +14,10 @@ services:
   App\Infrastructure\Serialization\:
     resource: '%kernel.project_dir%/src/Infrastructure/Serialization/'
 
+  App\Infrastructure\Serialization\Symfony\Normalizer\:
+    resource: '%kernel.project_dir%/src/Infrastructure/Serialization/Symfony/Normalizer/'
+    tags: [ { name: serializer.normalizer } ]
+
   App\Application\Services\:
     resource: '%kernel.project_dir%/src/Application/Services/'
 

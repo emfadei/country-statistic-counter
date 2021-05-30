@@ -1,6 +1,6 @@
 Feature: GET /api/countries-statistic
 
-  Scenario: When send request without query Expect collection items
+  Scenario: When send request without query | Expect collection items
     Given I have counter with key "ru" by value "240"
     Given I have counter with key "en" by value "1200"
     When I add "Content-Type" header equal to "application/json"

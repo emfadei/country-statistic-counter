@@ -28,7 +28,6 @@ class ApplicationContext implements Context
     /** @BeforeStep */
     public function beforeStep(BeforeStepScope $scope): void
     {
-
     }
 
     /**
@@ -51,6 +50,6 @@ class ApplicationContext implements Context
      */
     public function iHaveDataInRedisStorage(int $value, string $key): void
     {
-        $this->redis->hincrby($this->keyPrefix,$key, $value);
+        $this->redis->hincrby($this->keyPrefix, $key, $value);
     }
 }

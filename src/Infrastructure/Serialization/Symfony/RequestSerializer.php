@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Infrastructure\Serialization\Symfony;
-
 
 use App\Application\Query\Pagination;
 use App\Application\Query\PaginationParametersInterface;
@@ -17,7 +15,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 class RequestSerializer
 {
     private const FORMATS_BY_CONTENT_TYPES = [
-        'application/json'            => 'json',
+        'application/json' => 'json',
     ];
 
     private DenormalizerInterface $normalizer;
@@ -47,8 +45,6 @@ class RequestSerializer
 
     public function deserializeRequestBody(Request $request, RequestContext $context): object
     {
-
-
         $contentType = $request->headers->get('Content-Type');
         $contentType = explode(';', $contentType)[0];
 

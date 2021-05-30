@@ -1,13 +1,12 @@
 <?php
 
-
 namespace App\Application\Services;
-
 
 use App\Application\Error\ErrorInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 class Responder
 {
@@ -33,6 +32,10 @@ class Responder
                 $normalizedData = '';
                 $httpCode       = $statusCode ?? Response::HTTP_NO_CONTENT;
 
+                break;
+            case $data instanceof ConstraintViolationListInterface:
+                $httpCode       = Response::HTTP_BAD_REQUEST;
+                $normalizedData = $this->normalizer->normalize($data, 'json');
                 break;
             case $data instanceof ErrorInterface:
                 $httpCode       = $this->errorCodeNegotiator->negotiateHttpCode($data);
