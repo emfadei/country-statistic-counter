@@ -1,9 +1,6 @@
 <?php
 
-
 namespace App\Application\Error;
-
-
 
 class Error implements ErrorInterface
 {
@@ -42,7 +39,6 @@ class Error implements ErrorInterface
     {
         return $this->propertyPath;
     }
-
 
     public function hasError(): bool
     {

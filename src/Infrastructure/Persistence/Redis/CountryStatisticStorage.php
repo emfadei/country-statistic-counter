@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Infrastructure\Persistence\Redis;
-
 
 use App\Domain\Entity\CountryStatisticMap;
 use App\Domain\Repository\CountryStatisticRepositoryInterface;
@@ -22,7 +20,7 @@ class CountryStatisticStorage implements CountryStatisticRepositoryInterface
 
     public function increaseByCode(string $countryName): void
     {
-        $this->redis->hincrby($this->keyPrefix,$countryName, 1);
+        $this->redis->hincrby($this->keyPrefix, $countryName, 1);
     }
 
     public function getAll(): CountryStatisticMap

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Application\Error;
 
 use App\Application\Result\ResultInterface;

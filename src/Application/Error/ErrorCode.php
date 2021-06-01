@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Application\Error;
-
 
 class ErrorCode
 {

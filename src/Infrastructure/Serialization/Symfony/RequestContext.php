@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Infrastructure\Serialization\Symfony;
-
 
 class RequestContext
 {

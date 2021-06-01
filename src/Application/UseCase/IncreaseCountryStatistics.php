@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Application\UseCase;
-
 
 use App\Application\Command\IncreaseCountryStatisticsCommand;
 use App\Domain\Repository\CountryStatisticRepositoryInterface;

@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Application\Result;
-
 
 final class PassableResult extends AbstractResult
 {

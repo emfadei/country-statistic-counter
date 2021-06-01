@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Application\UseCase;
 
 use App\Application\Response\CollectionResponse;

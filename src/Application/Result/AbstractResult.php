@@ -1,9 +1,6 @@
 <?php
 
-
 namespace App\Application\Result;
-
-
 
 abstract class AbstractResult implements ResultInterface
 {

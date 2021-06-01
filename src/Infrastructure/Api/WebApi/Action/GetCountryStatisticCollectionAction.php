@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Infrastructure\Api\WebApi\Action;
 
 use App\Application\Services\Responder;

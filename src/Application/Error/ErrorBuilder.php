@@ -1,9 +1,6 @@
 <?php
 
-
 namespace App\Application\Error;
-
-
 
 class ErrorBuilder implements ErrorBuilderInterface
 {
@@ -16,7 +13,6 @@ class ErrorBuilder implements ErrorBuilderInterface
     private ?int $plural = null;
 
     private ?string $propertyPath = null;
-
 
     public function setMessage(string $message): ErrorBuilderInterface
     {

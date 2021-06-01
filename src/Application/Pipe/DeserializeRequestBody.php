@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Application\Pipe;
-
 
 use App\Application\Error\ErrorFactory;
 use App\Application\Result\PassableResult;

@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Application\Result;
-
 
 interface ResultInterface
 {

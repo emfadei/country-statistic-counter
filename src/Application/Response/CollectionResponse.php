@@ -1,15 +1,12 @@
 <?php
 
-
 namespace App\Application\Response;
-
 
 use App\Application\Query\Pagination;
 use Ramsey\Collection\AbstractArray;
 
 class CollectionResponse extends AbstractArray
 {
-
     private int $totalItems;
 
     private ?Pagination $pagination;

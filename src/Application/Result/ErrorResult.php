@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Application\Result;
 
 final class ErrorResult extends AbstractResult

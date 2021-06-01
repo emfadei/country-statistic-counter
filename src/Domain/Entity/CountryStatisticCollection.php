@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Domain\Entity;
-
 
 use Ramsey\Collection\AbstractCollection;
 

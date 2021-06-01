@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Infrastructure\Api\WebApi\Action;
 
 use App\Application\Command\IncreaseCountryStatisticsCommand;
@@ -19,7 +18,6 @@ class PostCountryStatisticAction
     private DeserializeRequestBody $deserializeRequestBodyPipe;
 
     private Responder $responder;
-
 
     public function __construct(IncreaseCountryStatistics $userCase, DeserializeRequestBody $deserializeRequestBodyPipe, Responder $responder)
     {
@@ -42,12 +40,11 @@ class PostCountryStatisticAction
         if ($result->hasError()) {
             $responseData = $result->getData();
         } else {
-            assert($result->getData() instanceof IncreaseCountryStatisticsCommand);
+            \assert($result->getData() instanceof IncreaseCountryStatisticsCommand);
 
             $responseData = $this->userCase->handle($result->getData());
         }
 
         return $this->responder->createResponse($responseData);
     }
-
 }

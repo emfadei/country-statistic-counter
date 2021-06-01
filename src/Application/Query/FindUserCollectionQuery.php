@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Application\Query;
-
 
 class FindUserCollectionQuery implements PaginationParametersInterface
 {

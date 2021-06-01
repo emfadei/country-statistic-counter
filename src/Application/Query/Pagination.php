@@ -1,10 +1,8 @@
 <?php
 
-
 namespace App\Application\Query;
 
 use Symfony\Component\Validator\Constraints as Assert;
-
 
 class Pagination
 {

@@ -31,3 +31,10 @@ composer check
 # Запуск приемочных тестов
 behat
 ```
+
+## API
+
+* url http://localhost:82
+* endpoints
+    * GET /api/countries-statistic
+    * POST /api/countries-statistic
